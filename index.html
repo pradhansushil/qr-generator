@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main>
+      <div id="login-container" class="login-container">
+        <form id="login-form">
+          <h2>Login</h2>
+
+          <label for="login-email">Email:</label>
+          <input id="login-email" 
+                 type="email" 
+                 placeholder="jonedoe@example.com" 
+                 required
+                 >
+
+          <label for="login-password">Password:</label>
+          <input id="login-password" type="password" required>
+
+          <p> 
+            Don't have an account? 
+            <button id="show-register" type="button">Register Here</button>
+          </p>
+
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+
+      <div id="registration-container" class="registration-container hidden">
+        <form id="registration-form">
+          <h2>Register</h2>
+
+          <label for="registration-email">Email:</label>
+          <input id="registration-email" 
+                 type="email" 
+                 placeholder="johndoe@example.com"
+                 required
+          >
+
+          <label for="registration-password">Password</label>
+          <input id="registration-password" type="password" required>
+
+          <label for="confirm-password">Confirm Password:</label>
+          <input id="confirm-password" type="password" required>
+
+          <p>
+            Already have an account?
+            <button id="show-login" type="button">Log In</button>
+          </p>
+
+          <button type="submit">Register</button>
+        </form>
+      </div>
+
+      <div id="dashboard" class="dashboard hidden">
+        <div class="user-controls">
+            <span id="user-email"></span>
+          <button id="logout-btn" type="button">Log Out</button>
+        </div>
+
+        <h1>Welcome!</h1>
+        
+        <div class="main-container">
+          <div id="qr-container">
+            <h2>Generate a QR Code</h2>
+
+            <select name="options" id="options">
+              <option value="plain-text" selected> Plain Text/Link </option>
+              <option value="wifi">WiFi</option>
+              <option value="payment">Payment</option>
+              <option value="menu-item">Menu Item</option>
+            </select>
+
+            <div id="input-plain-text" class="input-group">
+              <label for="qrText"> 
+                Text: 
+                <input id="qrText" 
+                       type="text" 
+                       placeholder="Enter text or link"
+                >
+              </label>
+
+            </div>
+            <div id="input-wifi" class="input-group hidden">
+              <form action="" method="get" id="wifiForm">
+                <label for="ssid"> 
+                  SSID: 
+                  <input id="ssid" type="text" placeholder="WiFi SSID">
+                </label>
+
+                <label for="password"> Password: 
+                  <input id="password" 
+                         type="password" 
+                         maxlength="64" 
+                         placeholder="Wifi Password"
+                         required
+                  >
+                </label>
+
+                <label for="encryption">
+                  Encryption:
+                  <select id="encryption" name="encryption">
+                    <option value="WPA">WPA/WPA2</option>
+                    <option value="WEP">WEP</option>
+                  </select>
+                </label>
+              </form>
+            </div>
+
+            <div id="input-payment" class="input-group hidden">
+              <label for="paymentProvider"> 
+                Payment Provider:
+                <select name="" id="paymentProvider">
+                  <option value="paypal">PayPal</option>
+                  <option value="venmo">Venmo</option>
+                </select>
+              </label>
+
+              <label for="paymentRecipient">
+                Business Username or Email:
+                <input id="paymentRecipient" 
+                       type="text" 
+                       placeholder="PayPal.me or Venmo handle"
+                       required
+                >
+              </label>
+            </div>
+
+            <div id="input-menu-item" class="input-group hidden">
+              <label for="menu-item">
+                Menu Item:
+                <input id="menu-item" type="text" placeholder="Menu Item Name">
+              </label>
+
+              <label for="menu-description">
+                Description:
+                <input id="menu-description" 
+                       type="text"
+                       placeholder="Description of Menu Item"
+                >
+              </label>
+
+              <label for="menu-link">
+                Link:
+                <input id="menu-link"
+                       type="url"
+                       placeholder="https://example.com/item"
+                >
+              </label>
+
+              <label for="item-price">
+                Price:
+                <input id="item-price" 
+                       type="number"
+                       step="0.01"
+                       min="0"
+                       placeholder="0.00"
+                >
+              </label>
+            </div>
+
+            <button id="generateBtn"
+                    type="button"
+                    class="hidden">
+              Generate
+            </button>
+            
+            <div class="qrImage-container">
+              <img alt="Image of QR Code" id="qrImage" class="qr-image hidden">              
+              <div class="qr-placeholder">
+                Your QR code will appear here.
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="/scripts/app.js"></script>
+  </body>
+</html>
